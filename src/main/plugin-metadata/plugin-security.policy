@@ -15,6 +15,24 @@
  *
  */
 
+/* Seeing the following errors when deploying on k8s with OpenSearch operator, trying too-wide fix as test
+opensearch @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+opensearch @     WARNING: plugin requires additional permissions     @
+opensearch @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+opensearch * java.io.FilePermission config#plus read
+opensearch * java.lang.RuntimePermission accessDeclaredMembers
+opensearch * java.lang.RuntimePermission getClassLoader
+opensearch * java.lang.RuntimePermission setContextClassLoader
+opensearch * java.lang.reflect.ReflectPermission suppressAccessChecks
+opensearch * java.net.NetPermission setDefaultAuthenticator
+opensearch * java.net.SocketPermission * connect,resolve
+opensearch * java.util.PropertyPermission aws.configFile read,write
+opensearch * java.util.PropertyPermission aws.sharedCredentialsFile read,write
+opensearch * java.util.PropertyPermission opensearch.allow_insecure_settings read,write
+opensearch * java.util.PropertyPermission opensearch.path.conf read,writ
+*/
+
 grant {
+    permission java.security.AllPermission;
     // No privileged operations are required, see #131
 };
