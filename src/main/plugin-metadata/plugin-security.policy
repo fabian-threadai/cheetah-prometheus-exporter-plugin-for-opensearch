@@ -32,6 +32,7 @@ opensearch * java.util.PropertyPermission opensearch.allow_insecure_settings rea
 opensearch * java.util.PropertyPermission opensearch.path.conf read,writ
 */
 
+
 grant {
     permission java.security.AllPermission;
     // No privileged operations are required, see #131
